@@ -8,6 +8,7 @@ import (
 	"github.com/Arijeet-webonise/todo/app/domain"
 	"github.com/Arijeet-webonise/todo/pkg/database"
 	"github.com/Arijeet-webonise/todo/pkg/logger"
+	"github.com/Arijeet-webonise/todo/pkg/mailer"
 	"github.com/Arijeet-webonise/todo/pkg/templates"
 	"github.com/go-zoo/bone"
 )
@@ -37,6 +38,13 @@ func main() {
 		panic("the configuration wasnt enabled")
 	}
 
+	m := mailer.SMTPMailer{
+		Host:     "smtp.gmail.com",
+		Port:     587,
+		Username: "-",
+		Password: "-",
+	}
+
 	a := &app.App{
 		Router:         router,
 		Cfg:            cfg,
@@ -44,6 +52,7 @@ func main() {
 		TplParser:      &templates.TemplateParser{},
 		DB:             dbConn,
 		TodoSeviceImpl: &domain.TodoServiceImpl{DB: dbConn},
+		Mailer:         m,
 	}
 	//setup the logger function for the domain package
 	domain.XOLog = a.Log.LogDBQuery

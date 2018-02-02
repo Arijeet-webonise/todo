@@ -2,31 +2,32 @@ package mailer
 
 import (
 	"net/smtp"
+	"strconv"
 )
 
-type mailer struct {
-	Client   string
-	username string
-	password string
+type SMTPMailer struct {
+	Host     string
+	Port     int
+	Username string
+	Password string
 }
 
-type mailer_interface interface {
+type ISMTPMailer interface {
 	SendMail()
-	testSMTP()
+	TestSMTP()
 	Auth()
 }
 
-func (m *mailer) Auth() (auth smtp.Auth) {
-	return smtp.PlainAuth("", m.username, m.password, m.Client)
+func (m *SMTPMailer) Auth() (auth smtp.Auth) {
+	return smtp.PlainAuth("", m.Username, m.Password, m.Host)
 }
 
-func (m *mailer) testSMTP(to []string) (err error) {
+func (m *SMTPMailer) TestSMTP(to []string) (err error) {
 	return m.SendMail("test@local.com", to, "Test is a test")
 }
 
-func (m *mailer) SendMail(from string, to []string, msg string) (err error) {
+func (m *SMTPMailer) SendMail(from string, to []string, msg string) (err error) {
 	auth := m.Auth()
-
-	return smtp.SendMail(m.Client, auth, from, to, []byte(msg))
+	return smtp.SendMail(m.Host+":"+strconv.Itoa(m.Port), auth, from, to, []byte(msg))
 
 }

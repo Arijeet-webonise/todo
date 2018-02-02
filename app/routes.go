@@ -15,4 +15,5 @@ func initialiseV1API(app *App) {
 	app.Router.Get("/", app.renderView(app.RenderIndex))
 	app.Router.Get("/todo/", app.renderView(app.DisplayTodos))
 
+	app.Router.Get("/forgetpassword", app.renderView(app.ForgetPassword))
 }
