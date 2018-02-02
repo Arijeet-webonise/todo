@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/kaddiya/todo/pkg/framework"
+	"github.com/Arijeet-webonise/todo/pkg/framework"
 )
 
 //Ping will indicate the health

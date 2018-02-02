@@ -3,7 +3,7 @@ package app
 import (
 	"net/http"
 
-	"github.com/kaddiya/todo/pkg/framework"
+	"github.com/Arijeet-webonise/todo/pkg/framework"
 )
 
 // Handle will be serving only those requests that dont need to be authed

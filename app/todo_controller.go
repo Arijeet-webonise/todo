@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/kaddiya/todo/app/domain"
-	"github.com/kaddiya/todo/pkg/framework"
+	"github.com/Arijeet-webonise/todo/app/domain"
+	"github.com/Arijeet-webonise/todo/pkg/framework"
 )
 
 func (a App) GetAllTodos(w *framework.Response, r *framework.Request) {

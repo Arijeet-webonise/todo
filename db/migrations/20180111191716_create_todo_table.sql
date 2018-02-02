@@ -2,14 +2,19 @@
 -- +goose Up
 -- SQL in section 'Up' is executed when this migration is applied
 
-create table todo(
+create table users(
   id  SERIAL PRIMARY KEY,
-  title VARCHAR(100) NOT NULL UNIQUE,
-  done boolean,
-  due_date timestamp DEFAULT current_timestamp
+  username varchar(255),
+  email varchar(255),
+  enabled boolean DEFAULT False,
+  password varchar(255),
+  last_login timestamp,
+  role varchar(255),
+  firstname varchar(255),
+  lastname varchar(255)
 );
 
 -- +goose Down
 -- SQL section 'Down' is executed when this migration is rolled back
 
-drop table todo;
+drop table users;
