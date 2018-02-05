@@ -38,11 +38,11 @@ func main() {
 		panic("the configuration wasnt enabled")
 	}
 
-	m := mailer.SMTPMailer{
+	m := &mailer.SMTPMailer{
 		Host:     "smtp.gmail.com",
 		Port:     587,
-		Username: "-",
-		Password: "-",
+		Username: "arijeet.baruah@weboniselab.com",
+		Password: "1902Anchit1@3",
 	}
 
 	a := &app.App{

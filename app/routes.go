@@ -1,5 +1,7 @@
 package app
 
+import "net/http"
+
 // InitRouter will intialise the router
 func (app *App) InitRouter() {
 	initialiseV1API(app)
@@ -16,4 +18,6 @@ func initialiseV1API(app *App) {
 	app.Router.Get("/todo/", app.renderView(app.DisplayTodos))
 
 	app.Router.Get("/forgetpassword", app.renderView(app.ForgetPassword))
+	app.Router.Get("/user/register", app.renderView(app.UserRegister))
+	app.Router.Post("/user/registersubmit", http.HandlerFunc(app.UserRegisterSubmit))
 }
