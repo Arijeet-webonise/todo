@@ -19,6 +19,6 @@ func initialiseV1API(app *App) {
 
 	//STATIC
 	fs := http.FileServer(http.Dir("assets/"))
-	app.Router.Post("/static/", http.StripPrefix("/static/", fs))
+	app.Router.Get("/static/", http.StripPrefix("/static/", fs))
 
 }
