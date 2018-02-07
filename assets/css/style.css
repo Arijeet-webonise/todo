@@ -1,0 +1,14 @@
+
+.navbar {
+    background-color :#3097D1 !important;
+    border-radius: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color:floralwhite;
+}
+
+.logo img{
+    display:inline-block;
+    max-width: 85px;
+}
